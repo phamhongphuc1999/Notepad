@@ -1,11 +1,11 @@
 ﻿Public Class Form1
     Public Sub New()
         InitializeController()
-        ' This call is required by the designer.
         InitializeComponent()
+    End Sub
 
-        ' Add any initialization after the InitializeComponent() call.
-
+    Private Sub NewToolStrip_Click(sender As Object, e As EventArgs) Handles NewToolStrip.Click
+        MsgBox("Click")
     End Sub
 
 End Class

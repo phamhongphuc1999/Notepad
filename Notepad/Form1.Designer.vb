@@ -17,133 +17,293 @@ Partial Class Form1
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
+#Region "Main Menu"
+    Private Sub InitializeFileMenu()
+        NewToolStrip = New ToolStripMenuItem()
+        With NewToolStrip
+            .Text = "New"
+            .ShortcutKeys = Shortcut.CtrlN
+        End With
+
+        NewWindowToolStrip = New ToolStripMenuItem()
+        With NewWindowToolStrip
+            .Text = "New Window"
+            .ShortcutKeys = Shortcut.CtrlShiftN
+        End With
+
+        OpenToolStrip = New ToolStripMenuItem()
+        With OpenToolStrip
+            .Text = "Open..."
+            .ShortcutKeys = Shortcut.CtrlO
+        End With
+
+        SaveToolStrip = New ToolStripMenuItem()
+        With SaveToolStrip
+            .Text = "Save"
+            .ShortcutKeys = Shortcut.CtrlS
+        End With
+
+        SaveAsToolStrip = New ToolStripMenuItem()
+        With SaveAsToolStrip
+            .Text = "Save As..."
+            .ShortcutKeys = Shortcut.CtrlShiftS
+        End With
+
+        BottomSaveAsSeparator = New ToolStripSeparator()
+
+        PageSetupToolStrip = New ToolStripMenuItem()
+        PageSetupToolStrip.Text = "Page Setup..."
+
+        PrintToolStrip = New ToolStripMenuItem()
+        With PrintToolStrip
+            .Text = "Print..."
+            .ShortcutKeys = Shortcut.CtrlP
+        End With
+
+        BottomPrintSeparator = New ToolStripSeparator()
+
+        ExitToolStrip = New ToolStripMenuItem()
+        ExitToolStrip.Text = "Exit"
+
+        FileToolStrip = New ToolStripMenuItem()
+        FileToolStrip.Text = "File"
+        FileToolStrip.DropDownItems.AddRange(New ToolStripItem() {
+            NewToolStrip,
+            NewWindowToolStrip,
+            OpenToolStrip,
+            SaveToolStrip,
+            SaveAsToolStrip,
+            BottomSaveAsSeparator,
+            PageSetupToolStrip,
+            PrintToolStrip,
+            BottomPrintSeparator,
+            ExitToolStrip
+        })
+    End Sub
+
+    Private Sub InitializeEditMenu()
+        UndoToolStrip = New ToolStripMenuItem()
+        With UndoToolStrip
+            .Text = "Undo"
+            .Enabled = False
+            .ShortcutKeys = Shortcut.CtrlZ
+        End With
+
+        BottomUndoSeparator = New ToolStripSeparator()
+
+        CutToolStrip = New ToolStripMenuItem()
+        With CutToolStrip
+            .Text = "Cut"
+            .Enabled = False
+            .ShortcutKeys = Shortcut.CtrlX
+        End With
+
+        CopyToolStrip = New ToolStripMenuItem()
+        With CopyToolStrip
+            .Text = "Copy"
+            .Enabled = False
+            .ShortcutKeys = Shortcut.CtrlC
+        End With
+
+        PasteToolStrip = New ToolStripMenuItem()
+        With PasteToolStrip
+            .Text = "Paste"
+            .ShortcutKeys = Shortcut.CtrlV
+        End With
+
+        DeleteToolStrip = New ToolStripMenuItem()
+        With DeleteToolStrip
+            .Text = "Delete"
+            .ShortcutKeys = Shortcut.Del
+        End With
+
+        BottomDeleteSeparator = New ToolStripSeparator()
+
+        SearchBingToolStrip = New ToolStripMenuItem()
+        With SearchBingToolStrip
+            .Text = "Search With Bing..."
+            .ShortcutKeys = Shortcut.CtrlE
+        End With
+
+        FindToolStrip = New ToolStripMenuItem()
+        With FindToolStrip
+            .Text = "Find..."
+            .Enabled = False
+            .ShortcutKeys = Shortcut.CtrlF
+        End With
+
+        FindNextToolStrip = New ToolStripMenuItem()
+        With FindNextToolStrip
+            .Text = "Find Next"
+            .Enabled = False
+            .ShortcutKeys = Shortcut.F3
+        End With
+
+        FindPreviousToolStrip = New ToolStripMenuItem()
+        With FindPreviousToolStrip
+            .Text = "Find Previous"
+            .Enabled = False
+            .ShortcutKeys = Shortcut.ShiftF3
+        End With
+
+        ReplaceToolStrip = New ToolStripMenuItem()
+        With ReplaceToolStrip
+            .Text = "Replace..."
+            .ShortcutKeys = Shortcut.CtrlH
+        End With
+
+        GotoToolStrip = New ToolStripMenuItem()
+        With GotoToolStrip
+            .Text = "Go To..."
+            .ShortcutKeys = Shortcut.CtrlG
+        End With
+
+        BottomGotoSeparator = New ToolStripSeparator()
+
+        SearchAllToolStrip = New ToolStripMenuItem()
+        With SearchAllToolStrip
+            .Text = "Search All..."
+            .ShortcutKeys = Shortcut.CtrlA
+        End With
+
+        TimeDateToolStrip = New ToolStripMenuItem()
+        With TimeDateToolStrip
+            .Text = "Time/Date"
+            .ShortcutKeys = Shortcut.F5
+        End With
+
+        EditToolStrip = New ToolStripMenuItem()
+        EditToolStrip.Text = "Edit"
+        EditToolStrip.DropDownItems.AddRange(New ToolStripItem() {
+            UndoToolStrip,
+            BottomUndoSeparator,
+            CutToolStrip,
+            CopyToolStrip,
+            PasteToolStrip,
+            DeleteToolStrip,
+            BottomDeleteSeparator,
+            SearchBingToolStrip,
+            FindToolStrip,
+            FindNextToolStrip,
+            FindPreviousToolStrip,
+            ReplaceToolStrip,
+            GotoToolStrip,
+            BottomGotoSeparator,
+            SearchAllToolStrip,
+            TimeDateToolStrip
+        })
+    End Sub
+
     Private Sub InitializeMenu()
-        Me.NoteMenu = New MenuStrip()
-        Me.FileToolStrip = New ToolStripMenuItem()
-        Me.EditToolStrip = New ToolStripMenuItem()
-        Me.FormatToolStrip = New ToolStripMenuItem()
-        Me.ViewToolStrip = New ToolStripMenuItem()
-        Me.HelpToolStrip = New ToolStripMenuItem()
-        Me.NoteMenu.SuspendLayout()
+        NoteMenu = New MenuStrip()
+        InitializeFileMenu()
+        InitializeEditMenu()
+        FormatToolStrip = New ToolStripMenuItem()
+        ViewToolStrip = New ToolStripMenuItem()
+        HelpToolStrip = New ToolStripMenuItem()
+        NoteMenu.SuspendLayout()
         Me.SuspendLayout()
 
         'NoteMenu
-        Me.NoteMenu.GripMargin = New Padding(2, 2, 0, 2)
-        Me.NoteMenu.ImageScalingSize = New Size(24, 24)
-        Me.NoteMenu.Items.AddRange(New ToolStripItem() {
-            Me.FileToolStrip,
-            Me.EditToolStrip,
-            Me.FormatToolStrip,
-            Me.ViewToolStrip,
-            Me.HelpToolStrip
+        NoteMenu.GripMargin = New Padding(2, 2, 0, 2)
+        NoteMenu.ImageScalingSize = New Size(24, 24)
+        NoteMenu.Items.AddRange(New ToolStripItem() {
+            FileToolStrip,
+            EditToolStrip,
+            FormatToolStrip,
+            ViewToolStrip,
+            HelpToolStrip
         })
-        Me.NoteMenu.Location = New Point(0, 0)
-        Me.NoteMenu.Name = "MenuStrip1"
-        Me.NoteMenu.Size = New Size(800, 33)
+        NoteMenu.Location = New Point(0, 0)
+        NoteMenu.Name = "MenuStrip1"
+        NoteMenu.Size = New Size(800, 33)
 
-        'FileToolStrip
-        Me.NewToolStrip = New ToolStripMenuItem()
-        Me.NewWindowToolStrip = New ToolStripMenuItem()
-        Me.OpenToolStrip = New ToolStripMenuItem()
-        Me.SaveToolStrip = New ToolStripMenuItem()
-        Me.SaveAsToolStrip = New ToolStripMenuItem()
-        Me.BottomSaveAsSeparator = New ToolStripSeparator()
-        Me.PageSetupToolStrip = New ToolStripMenuItem()
-        Me.PrintToolStrip = New ToolStripMenuItem()
-        Me.BottomPrintSeparator = New ToolStripSeparator()
-        Me.ExitToolStrip = New ToolStripMenuItem()
+#Region "FormatToolStrip"
+        WordWrapToolStrip = New ToolStripMenuItem()
+        FontToolStrip = New ToolStripMenuItem()
 
-        Me.NewToolStrip.Text = "New"
-        Me.NewWindowToolStrip.Text = "New Window"
-        Me.OpenToolStrip.Text = "Open..."
-        Me.SaveToolStrip.Text = "Save"
-        Me.SaveAsToolStrip.Text = "Save As..."
-        Me.PageSetupToolStrip.Text = "Page Setup..."
-        Me.PrintToolStrip.Text = "Print..."
-        Me.ExitToolStrip.Text = "Exit"
+        WordWrapToolStrip.Text = "Word Wrap"
+        FontToolStrip.Text = "Font..."
 
-        Me.FileToolStrip.Text = "File"
-        Me.FileToolStrip.DropDownItems.AddRange(New ToolStripItem() {
-            Me.NewToolStrip,
-            Me.NewWindowToolStrip,
-            Me.OpenToolStrip,
-            Me.SaveToolStrip,
-            Me.SaveAsToolStrip,
-            Me.BottomSaveAsSeparator,
-            Me.PageSetupToolStrip,
-            Me.PrintToolStrip,
-            Me.BottomPrintSeparator,
-            Me.ExitToolStrip
+        FormatToolStrip.Text = "Format"
+        FormatToolStrip.DropDownItems.AddRange(New ToolStripItem() {
+            WordWrapToolStrip,
+            FontToolStrip
+        })
+#End Region
+
+#Region "ViewToolStrip"
+        ZoomInToolStrip = New ToolStripMenuItem()
+        ZoomOutToolStrip = New ToolStripMenuItem()
+        ResotreDefaultZoomToolStrip = New ToolStripMenuItem()
+        StatusToolBut = New ToolStripButton()
+        ZoomInToolStrip.Text = "Zoom In"
+        ZoomOutToolStrip.Text = "Zoom Out"
+        ResotreDefaultZoomToolStrip.Text = "Restore Default Zoom"
+        StatusToolBut.Text = "True"
+
+        ZoomToolStrip = New ToolStripMenuItem()
+        ZoomToolStrip.Text = "Zoom"
+        ZoomToolStrip.DropDownItems.AddRange(New ToolStripItem() {
+            ZoomInToolStrip,
+            ZoomOutToolStrip,
+            ResotreDefaultZoomToolStrip
         })
 
-        'Edit
-        Me.UndoToolStrip = New ToolStripMenuItem()
-        Me.BottomUndoSeparator = New ToolStripSeparator()
-        Me.CutToolStrip = New ToolStripMenuItem()
-        Me.CopyToolStrip = New ToolStripMenuItem()
-        Me.PasteToolStrip = New ToolStripMenuItem()
-        Me.DeleteToolStrip = New ToolStripMenuItem()
-        Me.BottomDeleteSeparator = New ToolStripSeparator()
-        Me.SearchBingToolStrip = New ToolStripMenuItem()
-        Me.FindToolStrip = New ToolStripMenuItem()
-        Me.FindNextToolStrip = New ToolStripMenuItem()
-        Me.FindPreviousToolStrip = New ToolStripMenuItem()
-        Me.ReplaceToolStrip = New ToolStripMenuItem()
-        Me.GotoToolStrip = New ToolStripMenuItem()
-        Me.BottomGotoSeparator = New ToolStripSeparator()
-        Me.SearchAllToolStrip = New ToolStripMenuItem()
-        Me.TimeDateToolStrip = New ToolStripMenuItem()
-
-        Me.UndoToolStrip.Text = "Undo"
-        Me.UndoToolStrip.Enabled = False
-        Me.CutToolStrip.Text = "Cut"
-        Me.CutToolStrip.Enabled = False
-        Me.CopyToolStrip.Text = "Copy"
-        Me.CopyToolStrip.Enabled = False
-        Me.PasteToolStrip.Text = "Paste"
-        Me.DeleteToolStrip.Text = "Delete"
-        Me.SearchBingToolStrip.Text = "Search With Bing..."
-        Me.FindToolStrip.Text = "Find..."
-        Me.FindToolStrip.Enabled = False
-        Me.FindNextToolStrip.Text = "Find Next"
-        Me.FindNextToolStrip.Enabled = False
-        Me.FindPreviousToolStrip.Text = "Find Previous"
-        Me.FindPreviousToolStrip.Enabled = False
-        Me.ReplaceToolStrip.Text = "Replace..."
-        Me.GotoToolStrip.Text = "Go To..."
-        Me.SearchAllToolStrip.Text = "Search All..."
-        Me.TimeDateToolStrip.Text = "Time/Date"
-
-        Me.EditToolStrip.Text = "Edit"
-        Me.EditToolStrip.DropDownItems.AddRange(New ToolStripItem() {
-            Me.UndoToolStrip,
-            Me.BottomUndoSeparator,
-            Me.CutToolStrip,
-            Me.CopyToolStrip,
-            Me.PasteToolStrip,
-            Me.DeleteToolStrip,
-            Me.BottomDeleteSeparator,
-            Me.SearchBingToolStrip,
-            Me.FindToolStrip,
-            Me.FindNextToolStrip,
-            Me.FindPreviousToolStrip,
-            Me.ReplaceToolStrip,
-            Me.GotoToolStrip,
-            Me.BottomGotoSeparator,
-            Me.SearchAllToolStrip,
-            Me.TimeDateToolStrip
+        ViewToolStrip.Text = "View"
+        ViewToolStrip.DropDownItems.AddRange(New ToolStripItem() {
+            ZoomToolStrip,
+            StatusToolBut
         })
+#End Region
 
-        Me.FormatToolStrip.Text = "Format"
-        Me.ViewToolStrip.Text = "View"
-        Me.HelpToolStrip.Text = "Help"
+#Region "HelpToolStrip"
+        ViewHelpToolStrip = New ToolStripMenuItem()
+        SendFeedbackToolStrip = New ToolStripMenuItem()
+        BottomSendFeedbackSeparator = New ToolStripSeparator()
+        AboutNoteToolStrip = New ToolStripMenuItem()
 
-        Me.Controls.Add(Me.NoteMenu)
-        Me.MainMenuStrip = Me.NoteMenu
+        ViewHelpToolStrip.Text = "View Help"
+        SendFeedbackToolStrip.Text = "Send Feedback"
+        AboutNoteToolStrip.Text = "About Notepad"
 
-        Me.NoteMenu.ResumeLayout(False)
-        Me.NoteMenu.PerformLayout()
+        HelpToolStrip.Text = "Help"
+        HelpToolStrip.DropDownItems.AddRange(New ToolStripItem() {
+            ViewHelpToolStrip,
+            SendFeedbackToolStrip,
+            BottomSendFeedbackSeparator,
+            AboutNoteToolStrip
+        })
+#End Region
+
+        Me.Controls.Add(NoteMenu)
+        Me.MainMenuStrip = NoteMenu
+
+        NoteMenu.ResumeLayout(False)
+        NoteMenu.PerformLayout()
     End Sub
+
+    Private Sub InitializeContextMenu()
+        MainContextMenu = New ContextMenuStrip()
+        'UndoContextStrip = New ToolStripItem()
+        UndoContextStrip.Text = "Undo"
+        BottomUndoContextSeparator = New ToolStripSeparator()
+        'CutContextStrip = New ToolStripItem()
+        'CopyContextStrip = New ToolStripItem()
+        'PasteContextStrip = New ToolStripItem()
+        'DeleteContextStrip = New ToolStripItem()
+
+        MainContextMenu.Items.AddRange(New ToolStripItem() {
+            UndoContextStrip,
+            CutContextStrip,
+            CopyContextStrip,
+            PasteContextStrip,
+            DeleteContextStrip
+        })
+
+        Me.Controls.Add(MainContextMenu)
+    End Sub
+#End Region
 
     Private Sub InitializeController()
         Call InitializeMenu()
@@ -206,5 +366,24 @@ Partial Class Form1
     Friend WithEvents FontToolStrip As ToolStripMenuItem
 
     'ViewToolStrip
+    Friend WithEvents ZoomToolStrip As ToolStripMenuItem
+    Friend WithEvents ZoomInToolStrip As ToolStripMenuItem
+    Friend WithEvents ZoomOutToolStrip As ToolStripMenuItem
+    Friend WithEvents ResotreDefaultZoomToolStrip As ToolStripMenuItem
+    Friend WithEvents StatusToolBut As ToolStripButton
 
+    'HelpToolStrip
+    Friend WithEvents ViewHelpToolStrip As ToolStripMenuItem
+    Friend WithEvents SendFeedbackToolStrip As ToolStripMenuItem
+    Friend WithEvents BottomSendFeedbackSeparator As ToolStripSeparator
+    Friend WithEvents AboutNoteToolStrip As ToolStripMenuItem
+
+    'ContextMenu
+    Friend WithEvents MainContextMenu As ContextMenuStrip
+    Friend WithEvents UndoContextStrip As ToolStripItem
+    Friend WithEvents BottomUndoContextSeparator As ToolStripSeparator
+    Friend WithEvents CutContextStrip As ToolStripItem
+    Friend WithEvents CopyContextStrip As ToolStripItem
+    Friend WithEvents PasteContextStrip As ToolStripItem
+    Friend WithEvents DeleteContextStrip As ToolStripItem
 End Class
