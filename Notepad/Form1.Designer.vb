@@ -283,30 +283,160 @@ Partial Class Form1
         NoteMenu.PerformLayout()
     End Sub
 
-    Private Sub InitializeContextMenu()
-        MainContextMenu = New ContextMenuStrip()
-        'UndoContextStrip = New ToolStripItem()
-        UndoContextStrip.Text = "Undo"
-        BottomUndoContextSeparator = New ToolStripSeparator()
-        'CutContextStrip = New ToolStripItem()
-        'CopyContextStrip = New ToolStripItem()
-        'PasteContextStrip = New ToolStripItem()
-        'DeleteContextStrip = New ToolStripItem()
+    Private Sub InitializeContextInsertUnicode()
+        LRMContextStrip = New ToolStripMenuItem()
+        LRMContextStrip.Text = "LRM"
 
+        RLMContextStrip = New ToolStripMenuItem()
+        RLMContextStrip.Text = "RLM"
+
+        ZWJContextStrip = New ToolStripMenuItem()
+        ZWJContextStrip.Text = "ZWJ"
+
+        ZWNJContextStrip = New ToolStripMenuItem()
+        ZWNJContextStrip.Text = "ZWNJ"
+
+        LREContextStrip = New ToolStripMenuItem()
+        LREContextStrip.Text = "LRE"
+
+        RLEContextStrip = New ToolStripMenuItem()
+        RLEContextStrip.Text = "RLE"
+
+        LROContextStrip = New ToolStripMenuItem()
+        LROContextStrip.Text = "LRO"
+
+        RLOContextStrip = New ToolStripMenuItem()
+        RLOContextStrip.Text = "RLO"
+
+        PDFContextStrip = New ToolStripMenuItem()
+        PDFContextStrip.Text = "PDF"
+
+        NADSContextStrip = New ToolStripMenuItem()
+        NADSContextStrip.Text = "NADS"
+
+        NODSContextStrip = New ToolStripMenuItem()
+        NODSContextStrip.Text = "NODS"
+
+        ASSContextStrip = New ToolStripMenuItem()
+        ASSContextStrip.Text = "ASS"
+
+        ISSContextStrip = New ToolStripMenuItem()
+        ISSContextStrip.Text = "ISS"
+
+        AAFSContextStrip = New ToolStripMenuItem()
+        AAFSContextStrip.Text = "AAFS"
+
+        IAFSContextStrip = New ToolStripMenuItem()
+        IAFSContextStrip.Text = "IAFS"
+
+        RSContextStrip = New ToolStripMenuItem()
+        RSContextStrip.Text = "RS"
+
+        USSContextStrip = New ToolStripMenuItem()
+        USSContextStrip.Text = "US"
+
+        InsertUnicodeContextStrip = New ToolStripMenuItem()
+        InsertUnicodeContextStrip.Text = "Insert Unicode Control Characters"
+        InsertUnicodeContextStrip.DropDownItems.AddRange(New ToolStripItem() {
+            LRMContextStrip,
+            RLEContextStrip,
+            ZWJContextStrip,
+            ZWNJContextStrip,
+            LREContextStrip,
+            RLEContextStrip,
+            LROContextStrip,
+            RLOContextStrip,
+            PDFContextStrip,
+            NADSContextStrip,
+            NODSContextStrip,
+            ASSContextStrip,
+            ISSContextStrip,
+            AAFSContextStrip,
+            IAFSContextStrip,
+            RSContextStrip,
+            USSContextStrip
+        })
+    End Sub
+
+    Private Sub InitializeContextMenu()
+        UndoContextStrip = New ToolStripMenuItem()
+        UndoContextStrip.Text = "Undo"
+        UndoContextStrip.Enabled = False
+
+        BottomUndoContextSeparator = New ToolStripSeparator()
+
+        CutContextStrip = New ToolStripMenuItem()
+        CutContextStrip.Text = "Cut"
+        CutContextStrip.Enabled = False
+
+        CopyContextStrip = New ToolStripMenuItem()
+        CopyContextStrip.Text = "Copy"
+        CopyContextStrip.Text = False
+
+        PasteContextStrip = New ToolStripMenuItem()
+        PasteContextStrip.Text = "Paste"
+
+        DeleteContextStrip = New ToolStripMenuItem()
+        DeleteContextStrip.Text = "Delete"
+        DeleteContextStrip.Enabled = False
+
+        BottomDeleteContextSeparator = New ToolStripSeparator()
+
+        SelectAllContextStrip = New ToolStripMenuItem()
+        SelectAllContextStrip.Text = "Slect All"
+        SelectAllContextStrip.Enabled = False
+
+        BottomSelectAllContextSeparator = New ToolStripSeparator()
+
+        RightToLeftContextStrip = New ToolStripMenuItem()
+        RightToLeftContextStrip.Text = "Right to left Reading order"
+
+        ShowUnicodeContextStrip = New ToolStripButton()
+        ShowUnicodeContextStrip.Text = "Show Unicode Control characters"
+
+        BottomInsertUnicodeContextSeparator = New ToolStripSeparator()
+
+        OpenIMEContextStrip = New ToolStripMenuItem()
+        OpenIMEContextStrip.Text = "Open IME"
+
+        ReconversionContextStrip = New ToolStripMenuItem()
+        ReconversionContextStrip.Text = "Recoversion"
+        ReconversionContextStrip.Enabled = False
+
+        BottomReconversionContextSeparator = New ToolStripSeparator()
+
+        SearchWithBingContextStrip = New ToolStripMenuItem()
+        SearchWithBingContextStrip.Text = "Search With bing..."
+
+        InitializeContextInsertUnicode()
+
+        MainContextMenu = New ContextMenuStrip()
+        MainContextMenu.Width = 100
         MainContextMenu.Items.AddRange(New ToolStripItem() {
             UndoContextStrip,
+            BottomUndoContextSeparator,
             CutContextStrip,
             CopyContextStrip,
             PasteContextStrip,
-            DeleteContextStrip
+            DeleteContextStrip,
+            BottomDeleteContextSeparator,
+            SelectAllContextStrip,
+            BottomSelectAllContextSeparator,
+            RightToLeftContextStrip,
+            ShowUnicodeContextStrip,
+            InsertUnicodeContextStrip,
+            OpenIMEContextStrip,
+            ReconversionContextStrip,
+            SearchWithBingContextStrip
         })
 
-        Me.Controls.Add(MainContextMenu)
+        Me.ContextMenuStrip = MainContextMenu
     End Sub
 #End Region
 
     Private Sub InitializeController()
         Call InitializeMenu()
+        Call InitializeContextMenu()
     End Sub
 
     <System.Diagnostics.DebuggerStepThrough()>
@@ -380,10 +510,40 @@ Partial Class Form1
 
     'ContextMenu
     Friend WithEvents MainContextMenu As ContextMenuStrip
-    Friend WithEvents UndoContextStrip As ToolStripItem
+    Friend WithEvents UndoContextStrip As ToolStripMenuItem
     Friend WithEvents BottomUndoContextSeparator As ToolStripSeparator
-    Friend WithEvents CutContextStrip As ToolStripItem
-    Friend WithEvents CopyContextStrip As ToolStripItem
-    Friend WithEvents PasteContextStrip As ToolStripItem
-    Friend WithEvents DeleteContextStrip As ToolStripItem
+    Friend WithEvents CutContextStrip As ToolStripMenuItem
+    Friend WithEvents CopyContextStrip As ToolStripMenuItem
+    Friend WithEvents PasteContextStrip As ToolStripMenuItem
+    Friend WithEvents DeleteContextStrip As ToolStripMenuItem
+    Friend WithEvents BottomDeleteContextSeparator As ToolStripSeparator
+    Friend WithEvents SelectAllContextStrip As ToolStripMenuItem
+    Friend WithEvents BottomSelectAllContextSeparator As ToolStripSeparator
+    Friend WithEvents RightToLeftContextStrip As ToolStripMenuItem
+    Friend WithEvents ShowUnicodeContextStrip As ToolStripButton
+    Friend WithEvents InsertUnicodeContextStrip As ToolStripMenuItem
+    Friend WithEvents BottomInsertUnicodeContextSeparator As ToolStripSeparator
+    Friend WithEvents OpenIMEContextStrip As ToolStripMenuItem
+    Friend WithEvents ReconversionContextStrip As ToolStripMenuItem
+    Friend WithEvents BottomReconversionContextSeparator As ToolStripSeparator
+    Friend WithEvents SearchWithBingContextStrip As ToolStripMenuItem
+
+    'InsertUnicode
+    Friend WithEvents LRMContextStrip As ToolStripMenuItem
+    Friend WithEvents RLMContextStrip As ToolStripMenuItem
+    Friend WithEvents ZWJContextStrip As ToolStripMenuItem
+    Friend WithEvents ZWNJContextStrip As ToolStripMenuItem
+    Friend WithEvents LREContextStrip As ToolStripMenuItem
+    Friend WithEvents RLEContextStrip As ToolStripMenuItem
+    Friend WithEvents LROContextStrip As ToolStripMenuItem
+    Friend WithEvents RLOContextStrip As ToolStripMenuItem
+    Friend WithEvents PDFContextStrip As ToolStripMenuItem
+    Friend WithEvents NADSContextStrip As ToolStripMenuItem
+    Friend WithEvents NODSContextStrip As ToolStripMenuItem
+    Friend WithEvents ASSContextStrip As ToolStripMenuItem
+    Friend WithEvents ISSContextStrip As ToolStripMenuItem
+    Friend WithEvents AAFSContextStrip As ToolStripMenuItem
+    Friend WithEvents IAFSContextStrip As ToolStripMenuItem
+    Friend WithEvents RSContextStrip As ToolStripMenuItem
+    Friend WithEvents USSContextStrip As ToolStripMenuItem
 End Class
