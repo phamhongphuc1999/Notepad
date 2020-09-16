@@ -17,7 +17,7 @@ Partial Class Form1
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-#Region "Main Menu"
+#Region "Main Menu And Main Context Menu"
     Private Sub InitializeFileMenu()
         NewToolStrip = New ToolStripMenuItem()
         With NewToolStrip
@@ -437,10 +437,25 @@ Partial Class Form1
     Private Sub InitializeController()
         Call InitializeMenu()
         Call InitializeContextMenu()
+
+        FileDlg = New OpenFileDialog()
+        FileDlg.Title = "Open File Dialog"
+        FileDlg.InitialDirectory = "C:\"
+        FileDlg.Filter = "All files (*.*)|*.*|All files (*.*)|*.*"
+        FileDlg.FilterIndex = 2
+        FileDlg.RestoreDirectory = True
+
+        textArea = New RichTextBox()
+    End Sub
+
+    Private Sub ChangeFormText(FileName As String)
+        Me.FileName = FileName
+        Me.Text = FileName & Config.NotepadText
     End Sub
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        FileName = "Untitled"
         Me.SuspendLayout()
         '
         'Form1
@@ -449,10 +464,19 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(500, 500)
         Me.Name = "Form1"
-        Me.Text = "Untitled - Notepad"
+        Me.Icon = New Icon("../../Resources/Images/notepad.ico")
+        Me.Text = FileName & Config.NotepadText
         Me.ResumeLayout(False)
 
+        textArea.Location = New Point(0, NoteMenu.Height)
+        textArea.Size = New Size(Me.Width, Me.Height - NoteMenu.Height)
+        Me.Controls.Add(textArea)
     End Sub
+    Friend FileName As String
+
+    Friend WithEvents FileDlg As OpenFileDialog
+
+    Friend WithEvents textArea As RichTextBox
 
     Friend WithEvents NoteMenu As MenuStrip
     Friend WithEvents FileToolStrip As ToolStripMenuItem
