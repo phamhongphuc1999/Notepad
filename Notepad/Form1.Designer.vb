@@ -440,10 +440,12 @@ Partial Class Form1
 
         FileDlg = New OpenFileDialog()
         FileDlg.Title = "Open File Dialog"
-        FileDlg.InitialDirectory = "C:\"
         FileDlg.Filter = "All files (*.*)|*.*|All files (*.*)|*.*"
         FileDlg.FilterIndex = 2
         FileDlg.RestoreDirectory = True
+
+        SaveFileDlg = New SaveFileDialog()
+        SaveFileDlg.Filter = "All files (*.*)|*.*|All files (*.*)|*.*"
 
         textArea = New RichTextBox()
     End Sub
@@ -475,6 +477,7 @@ Partial Class Form1
     Friend FileName As String
 
     Friend WithEvents FileDlg As OpenFileDialog
+    Friend WithEvents SaveFileDlg As SaveFileDialog
 
     Friend WithEvents textArea As RichTextBox
 
