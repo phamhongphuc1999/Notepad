@@ -11,4 +11,9 @@
             WriteNewFile = False
         End Try
     End Function
+
+    Public Shared Function GetNameByPath(FilePath As String) As String
+        Dim position As Integer = FilePath.LastIndexOf("\") + 1
+        GetNameByPath = FilePath.Substring(position)
+    End Function
 End Class
