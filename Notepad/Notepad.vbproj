@@ -102,6 +102,7 @@
     <Compile Include="PageSetupForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Program.vb" />
     <Compile Include="WorkWithFile.vb" />
   </ItemGroup>
   <ItemGroup>
