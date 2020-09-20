@@ -96,6 +96,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PageSetupForm.Designer.vb">
+      <DependentUpon>PageSetupForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PageSetupForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WorkWithFile.vb" />
   </ItemGroup>
   <ItemGroup>

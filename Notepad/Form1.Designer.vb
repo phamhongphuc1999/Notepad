@@ -14,6 +14,10 @@ Partial Class Form1
         End Try
     End Sub
 
+    Private Sub ChangeFormText(FileName As String)
+        Me.Text = FileName & Config.NotepadText
+    End Sub
+
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
@@ -450,11 +454,6 @@ Partial Class Form1
         textArea = New RichTextBox()
     End Sub
 
-    Private Sub ChangeFormText(FileName As String)
-        Me.FileName = FileName
-        Me.Text = FileName & Config.NotepadText
-    End Sub
-
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         FileName = "Untitled"
@@ -474,7 +473,6 @@ Partial Class Form1
         textArea.Size = New Size(Me.Width, Me.Height - NoteMenu.Height)
         Me.Controls.Add(textArea)
     End Sub
-    Friend FileName As String
 
     Friend WithEvents FileDlg As OpenFileDialog
     Friend WithEvents SaveFileDlg As SaveFileDialog
