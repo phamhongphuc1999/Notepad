@@ -1,5 +1,7 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+﻿Imports Notepad.NotepadForm
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class MainForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -452,30 +454,37 @@ Partial Class Form1
         SaveFileDlg.Filter = "All files (*.*)|*.*|All files (*.*)|*.*"
 
         textArea = New RichTextBox()
+        textArea.Location = New Point(0, NoteMenu.Height)
+        textArea.Size = New Size(Me.Width, Me.Height - NoteMenu.Height)
+        Me.Controls.Add(textArea)
+
+        PageSetupFormEntity = New PageSetupForm()
+        FontFormEntity = New FontForm()
+        PrinterFormEntity = New PrinterForm()
     End Sub
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        FileName = "Untitled"
+        Config.FileName = "Untitled"
         Me.SuspendLayout()
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(500, 500)
+        Me.ClientSize = New System.Drawing.Size(600, 600)
         Me.Name = "Form1"
         Me.Icon = New Icon("../../Resources/Images/notepad.ico")
-        Me.Text = FileName & Config.NotepadText
+        Me.Text = Config.FileName & Config.NotepadText
         Me.ResumeLayout(False)
-
-        textArea.Location = New Point(0, NoteMenu.Height)
-        textArea.Size = New Size(Me.Width, Me.Height - NoteMenu.Height)
-        Me.Controls.Add(textArea)
     End Sub
 
     Friend WithEvents FileDlg As OpenFileDialog
     Friend WithEvents SaveFileDlg As SaveFileDialog
+
+    Friend WithEvents PageSetupFormEntity As PageSetupForm
+    Friend WithEvents FontFormEntity As FontForm
+    Friend WithEvents PrinterFormEntity As PrinterForm
 
     Friend WithEvents textArea As RichTextBox
 

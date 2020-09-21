@@ -1,32 +1,14 @@
-﻿Public Class Form1
+﻿Public Class MainForm
 
     Public Sub New()
-        InitializeController()
         InitializeComponent()
+        InitializeController()
     End Sub
 
 #Region "FileToolStrip"
-    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If Not Config.IsSavedFile Then
-            Dim dlg As DialogResult = MsgBox(String.Format("Do you want to save changes to {0}?", Config.FileName), MsgBoxStyle.YesNoCancel, Title:="Notepad")
-            If dlg = DialogResult.Yes Then
-                If Config.FilePath = "" Then
-                    Dim result As DialogResult = SaveFileDlg.ShowDialog()
-                    If result = DialogResult.OK Then
-                        Dim FilePath As String = SaveFileDlg.FileName
-                        WorkWithFile.WriteFile(SaveFileDlg.FileName, textArea.Text)
-                    Else e.Cancel = True
-                    End If
-                Else SaveToolStrip_Click(SaveToolStrip, New EventArgs())
-                End If
-            ElseIf dlg = DialogResult.Cancel Then
-                e.Cancel = True
-            End If
-        End If
-    End Sub
-
-    Private Sub NewToolStrip_Click(sender As Object, e As EventArgs) Handles NewToolStrip.Click
-        MsgBox("Click")
+    Private Sub NewWindowToolStrip_Click(sender As Object, e As EventArgs) Handles NewWindowToolStrip.Click
+        Dim newForm As MainForm = New MainForm()
+        newForm.ShowDialog()
     End Sub
 
     Private Sub OpenToolStrip_Click(sender As Object, e As EventArgs) Handles OpenToolStrip.Click
@@ -66,8 +48,33 @@
         End If
     End Sub
 
+    Private Sub PageSetupToolStrip_Click(sender As Object, e As EventArgs) Handles PageSetupToolStrip.Click
+        PageSetupFormEntity.ShowDialog()
+    End Sub
+
     Private Sub ExitToolStrip_Click(sender As Object, e As EventArgs) Handles ExitToolStrip.Click
         Application.Exit()
+    End Sub
+
+
+#End Region
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If Not Config.IsSavedFile Then
+            Dim dlg As DialogResult = MsgBox(String.Format("Do you want to save changes to {0}?", Config.FileName), MsgBoxStyle.YesNoCancel, Title:="Notepad")
+            If dlg = DialogResult.Yes Then
+                If Config.FilePath = "" Then
+                    Dim result As DialogResult = SaveFileDlg.ShowDialog()
+                    If result = DialogResult.OK Then
+                        Dim FilePath As String = SaveFileDlg.FileName
+                        WorkWithFile.WriteFile(SaveFileDlg.FileName, textArea.Text)
+                    Else e.Cancel = True
+                    End If
+                Else SaveToolStrip_Click(SaveToolStrip, New EventArgs())
+                End If
+            ElseIf dlg = DialogResult.Cancel Then
+                e.Cancel = True
+            End If
+        End If
     End Sub
 
     Private Sub TextArea_KeyPress(sender As Object, e As KeyPressEventArgs) Handles textArea.KeyPress
@@ -76,5 +83,4 @@
             Config.IsSavedFile = False
         End If
     End Sub
-#End Region
 End Class
