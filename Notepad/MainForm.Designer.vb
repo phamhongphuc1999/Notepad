@@ -489,95 +489,42 @@ Partial Class MainForm
     Friend WithEvents textArea As RichTextBox
 
     Friend WithEvents NoteMenu As MenuStrip
-    Friend WithEvents FileToolStrip As ToolStripMenuItem
-    Friend WithEvents EditToolStrip As ToolStripMenuItem
-    Friend WithEvents FormatToolStrip As ToolStripMenuItem
-    Friend WithEvents ViewToolStrip As ToolStripMenuItem
-    Friend WithEvents HelpToolStrip As ToolStripMenuItem
+    Friend WithEvents FileToolStrip, EditToolStrip, FormatToolStrip, ViewToolStrip, HelpToolStrip As ToolStripMenuItem
 
     'FileToolStrip
-    Friend WithEvents NewToolStrip As ToolStripMenuItem
-    Friend WithEvents NewWindowToolStrip As ToolStripMenuItem
-    Friend WithEvents OpenToolStrip As ToolStripMenuItem
-    Friend WithEvents SaveToolStrip As ToolStripMenuItem
-    Friend WithEvents SaveAsToolStrip As ToolStripMenuItem
-    Friend WithEvents BottomSaveAsSeparator As ToolStripSeparator
-    Friend WithEvents PageSetupToolStrip As ToolStripMenuItem
-    Friend WithEvents PrintToolStrip As ToolStripMenuItem
-    Friend WithEvents BottomPrintSeparator As ToolStripSeparator
-    Friend WithEvents ExitToolStrip As ToolStripMenuItem
+    Friend WithEvents NewToolStrip, NewWindowToolStrip, OpenToolStrip, SaveToolStrip As ToolStripMenuItem
+    Friend WithEvents SaveAsToolStrip, PageSetupToolStrip, PrintToolStrip, ExitToolStrip As ToolStripMenuItem
+    Friend WithEvents BottomSaveAsSeparator, BottomPrintSeparator As ToolStripSeparator
 
     'EditToolStrip
-    Friend WithEvents UndoToolStrip As ToolStripMenuItem
-    Friend WithEvents BottomUndoSeparator As ToolStripSeparator
-    Friend WithEvents CutToolStrip As ToolStripMenuItem
-    Friend WithEvents CopyToolStrip As ToolStripMenuItem
-    Friend WithEvents PasteToolStrip As ToolStripMenuItem
-    Friend WithEvents DeleteToolStrip As ToolStripMenuItem
-    Friend WithEvents BottomDeleteSeparator As ToolStripSeparator
-    Friend WithEvents SearchBingToolStrip As ToolStripMenuItem
-    Friend WithEvents FindToolStrip As ToolStripMenuItem
-    Friend WithEvents FindNextToolStrip As ToolStripMenuItem
-    Friend WithEvents FindPreviousToolStrip As ToolStripMenuItem
-    Friend WithEvents ReplaceToolStrip As ToolStripMenuItem
-    Friend WithEvents GotoToolStrip As ToolStripMenuItem
-    Friend WithEvents BottomGotoSeparator As ToolStripSeparator
-    Friend WithEvents SearchAllToolStrip As ToolStripMenuItem
-    Friend WithEvents TimeDateToolStrip As ToolStripMenuItem
+    Friend WithEvents UndoToolStrip, CutToolStrip, CopyToolStrip, PasteToolStrip, DeleteToolStrip As ToolStripMenuItem
+    Friend WithEvents SearchBingToolStrip, FindToolStrip, FindNextToolStrip, FindPreviousToolStrip As ToolStripMenuItem
+    Friend WithEvents ReplaceToolStrip, GotoToolStrip, SearchAllToolStrip, TimeDateToolStrip As ToolStripMenuItem
+    Friend WithEvents BottomUndoSeparator, BottomDeleteSeparator, BottomGotoSeparator As ToolStripSeparator
 
     'FormatToolStrip
-    Friend WithEvents WordWrapToolStrip As ToolStripMenuItem
-    Friend WithEvents FontToolStrip As ToolStripMenuItem
+    Friend WithEvents WordWrapToolStrip, FontToolStrip As ToolStripMenuItem
 
     'ViewToolStrip
-    Friend WithEvents ZoomToolStrip As ToolStripMenuItem
-    Friend WithEvents ZoomInToolStrip As ToolStripMenuItem
-    Friend WithEvents ZoomOutToolStrip As ToolStripMenuItem
-    Friend WithEvents ResotreDefaultZoomToolStrip As ToolStripMenuItem
+    Friend WithEvents ZoomToolStrip, ZoomInToolStrip, ZoomOutToolStrip, ResotreDefaultZoomToolStrip As ToolStripMenuItem
     Friend WithEvents StatusToolBut As ToolStripButton
 
     'HelpToolStrip
-    Friend WithEvents ViewHelpToolStrip As ToolStripMenuItem
-    Friend WithEvents SendFeedbackToolStrip As ToolStripMenuItem
+    Friend WithEvents ViewHelpToolStrip, SendFeedbackToolStrip, AboutNoteToolStrip As ToolStripMenuItem
     Friend WithEvents BottomSendFeedbackSeparator As ToolStripSeparator
-    Friend WithEvents AboutNoteToolStrip As ToolStripMenuItem
 
     'ContextMenu
     Friend WithEvents MainContextMenu As ContextMenuStrip
-    Friend WithEvents UndoContextStrip As ToolStripMenuItem
-    Friend WithEvents BottomUndoContextSeparator As ToolStripSeparator
-    Friend WithEvents CutContextStrip As ToolStripMenuItem
-    Friend WithEvents CopyContextStrip As ToolStripMenuItem
-    Friend WithEvents PasteContextStrip As ToolStripMenuItem
-    Friend WithEvents DeleteContextStrip As ToolStripMenuItem
-    Friend WithEvents BottomDeleteContextSeparator As ToolStripSeparator
-    Friend WithEvents SelectAllContextStrip As ToolStripMenuItem
-    Friend WithEvents BottomSelectAllContextSeparator As ToolStripSeparator
-    Friend WithEvents RightToLeftContextStrip As ToolStripMenuItem
+    Friend WithEvents UndoContextStrip, CutContextStrip, CopyContextStrip, PasteContextStrip, DeleteContextStrip As ToolStripMenuItem
+    Friend WithEvents BottomUndoContextSeparator, BottomDeleteContextSeparator As ToolStripSeparator
+    Friend WithEvents SelectAllContextStrip, RightToLeftContextStrip As ToolStripMenuItem
+    Friend WithEvents BottomSelectAllContextSeparator, BottomInsertUnicodeContextSeparator, BottomReconversionContextSeparator As ToolStripSeparator
+    Friend WithEvents InsertUnicodeContextStrip, OpenIMEContextStrip, ReconversionContextStrip, SearchWithBingContextStrip As ToolStripMenuItem
     Friend WithEvents ShowUnicodeContextStrip As ToolStripButton
-    Friend WithEvents InsertUnicodeContextStrip As ToolStripMenuItem
-    Friend WithEvents BottomInsertUnicodeContextSeparator As ToolStripSeparator
-    Friend WithEvents OpenIMEContextStrip As ToolStripMenuItem
-    Friend WithEvents ReconversionContextStrip As ToolStripMenuItem
-    Friend WithEvents BottomReconversionContextSeparator As ToolStripSeparator
-    Friend WithEvents SearchWithBingContextStrip As ToolStripMenuItem
 
     'InsertUnicode
-    Friend WithEvents LRMContextStrip As ToolStripMenuItem
-    Friend WithEvents RLMContextStrip As ToolStripMenuItem
-    Friend WithEvents ZWJContextStrip As ToolStripMenuItem
-    Friend WithEvents ZWNJContextStrip As ToolStripMenuItem
-    Friend WithEvents LREContextStrip As ToolStripMenuItem
-    Friend WithEvents RLEContextStrip As ToolStripMenuItem
-    Friend WithEvents LROContextStrip As ToolStripMenuItem
-    Friend WithEvents RLOContextStrip As ToolStripMenuItem
-    Friend WithEvents PDFContextStrip As ToolStripMenuItem
-    Friend WithEvents NADSContextStrip As ToolStripMenuItem
-    Friend WithEvents NODSContextStrip As ToolStripMenuItem
-    Friend WithEvents ASSContextStrip As ToolStripMenuItem
-    Friend WithEvents ISSContextStrip As ToolStripMenuItem
-    Friend WithEvents AAFSContextStrip As ToolStripMenuItem
-    Friend WithEvents IAFSContextStrip As ToolStripMenuItem
-    Friend WithEvents RSContextStrip As ToolStripMenuItem
-    Friend WithEvents USSContextStrip As ToolStripMenuItem
+    Friend WithEvents LRMContextStrip, RLMContextStrip, ZWJContextStrip, ZWNJContextStrip, LREContextStrip As ToolStripMenuItem
+    Friend WithEvents RLEContextStrip, LROContextStrip, RLOContextStrip, PDFContextStrip, NADSContextStrip As ToolStripMenuItem
+    Friend WithEvents NODSContextStrip, ASSContextStrip, ISSContextStrip, AAFSContextStrip, IAFSContextStrip As ToolStripMenuItem
+    Friend WithEvents RSContextStrip, USSContextStrip As ToolStripMenuItem
 End Class
